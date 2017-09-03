@@ -1,0 +1,102 @@
+<h1>Youtube_Video</h1>
+
+<div class = container-top>
+
+<!--Videosテーブルのyoutube_idからデータを取得する方法-->
+
+<% @videos.each do |video| %>
+
+    <ul>
+    <li><%=link_to video.youtube_id, video_path(video.id) %></li>
+    </ul>
+
+<% end %>
+
+<% @videos.each do |video| %>
+<% iframe = content_tag(
+    :iframe,
+    '', # empty body
+    width: 560,
+    height: 315,
+    src: "https://www.youtube.com/embed/#{video.youtube_id}",
+    frameborder: 4,
+    allowfullscreen: true
+) %>
+<%= content_tag(:div, iframe, class: 'youtube-container') %>
+<% end %>
+</div>
+<!--ここまでyoutube_idからデータ取得-->
+
+<!--ここからhelperを使って動画を埋め込む方法。-->
+<!--ジャンル毎にyoutube_idを取得できるように変更できるようにする-->
+<div class = "menu">
+    <div class = "menu1">
+<h2><%= link_to("ギターロック" ,"/videos/1")%></h2>
+    <div class = "menu1-video">
+<ul>
+<li><%= video(video_id: 'Pqf8Hbf9VbU') %></li>
+<li><%= video(video_id: '61-zgZCJDVA') %></li>
+<li><%= video(video_id: 'JBhhi3XlP0A') %></li>
+<li><%= video(video_id: 'Pqf8Hbf9VbU') %></li>
+</ul>
+    </div>
+    </div>
+
+    <div class = "menu2">
+    <div class = "menu2-title">
+<h2><%= link_to ('オルタナ' ,'/video_genre_path(:genre_id)') %></h2>
+    </div>
+    <div class = "menu2-video">
+<ul>
+<li><%= video(video_id: 'Pqf8Hbf9VbU') %></li>
+<li><%= video(video_id: 'IRWGgOATTUQ') %></li>
+<li><%= video(video_id: 'Pqf8Hbf9VbU') %></li>
+<li><%= video(video_id: 'F3tnfgZhJME') %></li>
+</ul>
+    </div>
+    </div>
+
+<div class = "menu3">
+    <div class = "menu3-title">
+        <h2><%= link_to("エモーショナル", "/videos/3") %></h2>
+    </div>
+    <div class = "nemu3-video">
+        <ul>
+        <li> </li>
+        </ul>
+    </div>
+</div>
+
+<div class = "menu4">
+    <div class = "menu4-title">
+        <h2><%= link_to("マスロック","/videos/4" )%></h2>
+    </div>
+    <div class = "nemu4-video">
+        <ul>
+        <li> </li>
+        </ul>
+    </div>
+</div>
+
+<div class = "menu5">
+    <div class = "menu5-title">
+        <h2><%= link_to("プログレ", "#")%></h2>
+    </div>
+    <div class = "nemu5-video">
+        <ul>
+        <li> </li>
+        </ul>
+    </div>
+</div>
+
+</div>
+
+
+
+
+  　<% @videos.each do |video| %>
+
+    <ul>
+    <li><%=link_to "video.title", video_path(video.id) %></li>
+    <% end %>
+</end>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Music01</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+  <%= render 'layouts/header' %><!--ヘッダーをレンダー-->
+
+  </head>
+
+  <body>
+
+   <div class = "container">
+      <div class = "search">
+       <%= form_tag(videos_path, method: "get") do %>
+       <%= label_tag :name, "検索" %><%= text_field_tag :title, params[:title] %>
+       <% end %>
+      </div>
+
+      <%= yield %>
+
+
+    </div>
+  </body>
+</html>
