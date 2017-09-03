@@ -10,7 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170828223422) do
+ActiveRecord::Schema.define(version: 20170903105201) do
+
+  create_table "genres", force: :cascade do |t|
+    t.string "name", default: "", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "tests", force: :cascade do |t|
     t.string "name"
@@ -19,11 +25,9 @@ ActiveRecord::Schema.define(version: 20170828223422) do
   end
 
   create_table "video_genres", force: :cascade do |t|
-    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "genre_id"
-    t.string "genre"
     t.string "youtube_id"
   end
 
@@ -32,7 +36,6 @@ ActiveRecord::Schema.define(version: 20170828223422) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "youtube_id"
-    t.string "genre"
   end
 
 end
