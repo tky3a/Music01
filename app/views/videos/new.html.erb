@@ -1,0 +1,32 @@
+
+
+<%= form_for @video do |f| %>
+
+  <div class="field">
+    <%= f.label :title, "タイトル" %>
+    <%= f.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= f.label :youtube_id, "YoutubeID" %>
+    <%= f.text_field :youtube_id %>
+  </div>
+
+<%= field_set_tag 'ジャンル選択' do %>
+  <%= fields_for @video.genre do |af|%>
+    <div class="field">
+      <%= af.select :name,['ロック','ギターロック','オルタナ','エモーショナル','プログレ','ポストロック'],
+        {include_blank: 'ジャンル選択' }, class: 'genre' ,multiple: true, size: '10' %></br>
+    </div>
+  <% end %>
+<% end %>
+
+
+  <div class="actions">
+    <%= f.submit "登録する" %>
+  </div>
+
+
+
+
+<% end %>

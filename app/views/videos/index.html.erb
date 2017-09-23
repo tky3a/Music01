@@ -8,6 +8,7 @@
 
   <ul>
     <li><%=link_to(video.youtube_id, video_path(video.id)) %></li>
+    <li><%=link_to(video.video_genre, video_genre_path(video.id)) %></li>
   </ul>
 
   <% end %>

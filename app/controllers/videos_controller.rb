@@ -13,6 +13,27 @@ class VideosController < ApplicationController
       @videos = Video.all.find_by(id: params[:id])
     end
 
-    def create
+    def new
+      @video = Video.new
+      @video.genre.build
     end
+
+    def fields
+      @video = Video.find(1)
+    end
+
+    def create
+      @video = Video.new(video_params)
+
+
+      if @video.save
+        redirect_to @video, notice: "登録しました"
+      else
+        render 'new'
+      end
+   end
+    private
+        def video_params
+          params.require(:video).permit(:title, :youtube_id)
+        end
 end

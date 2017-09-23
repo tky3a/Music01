@@ -3,4 +3,6 @@ class Video < ApplicationRecord
   #validates :youtube_id, presence :true #youtube_idの値が空じゃないか検証する (値があれば保存)
   has_many :video_genre
   has_many :genre, through: :video_genre
+
+
 end

@@ -13,16 +13,17 @@
 
   <body>
 
-   <div class = "container">
-      <div class = "search">
+    <div class = "container">
+      <!--<div class = "search">
        <%= form_tag(videos_path, method: "get") do %>
        <%= label_tag :name, "検索" %><%= text_field_tag :title, params[:title] %>
        <% end %>
-      </div>
+     </div>-->
 
       <%= yield %>
 
-
+        <%= render 'layouts/footer' %>
     </div>
   </body>
+
 </html>
