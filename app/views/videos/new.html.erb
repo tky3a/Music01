@@ -6,27 +6,30 @@
     <%= f.label :title, "タイトル" %>
     <%= f.text_field :title %>
   </div>
-
+  <!--<label><%= f.check_box :title,{class: 'chk'}, 'yes','no' %>##</label><br/>-->
   <div class="field">
     <%= f.label :youtube_id, "YoutubeID" %>
     <%= f.text_field :youtube_id %>
   </div>
 
 <%= field_set_tag 'ジャンル選択' do %>
-  <%= fields_for @video.genre do |af|%>
+  <%= fields_for @video.genres do |af| %>
     <div class="field">
-      <%= af.select :name,['ロック','ギターロック','オルタナ','エモーショナル','プログレ','ポストロック'],
-        {include_blank: 'ジャンル選択' }, class: 'genre' ,multiple: true, size: '10' %></br>
+      <%= af.collection_select(:name, @genre, :name, :name,{include_hidden: false},{multiple: true}) %>
+
     </div>
   <% end %>
 <% end %>
-
-
+<!--
+  <div class="field">
+     <%= f.label :genres %><br>
+    <%= collection_check_boxes(:video, :genre_ids, Genre.all, :name, :name) do |t|  %>
+      <% t.label { t.check_box + t.text } %>
+    <% end %>
+  </div>
+-->
   <div class="actions">
     <%= f.submit "登録する" %>
   </div>
-
-
-
 
 <% end %>
