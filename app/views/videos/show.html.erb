@@ -1,1 +1,26 @@
-<h1>ギターロック</h1>
+<h1><%= link_to("ホーム","/") %> / <%= @video.title %></h1>
+
+<div class="show-iframe">
+<p><%= @video.youtube_id %></p>
+<p>ジャンル：<%= link_to @genre.name, "#" %></p>
+<p>お気に入り登録</p><!--お気に入り機能実装予定-->
+
+</div>
+<% iframe = content_tag(
+  :iframe,
+  '', # empty body
+  width: 420,
+  height: 315,
+  src: "https://www.youtube.com/embed/#{@video.youtube_id}",
+  frameborder: 4,
+  allowfullscreen: true
+) %>
+<!--↓のコードで動画のフレームを表示している-->
+<%= content_tag(:div, iframe, class: 'youtube-container') %>
+
+<!--サムネイル取得方法
+
+<img src="http://img.youtube.com/vi/hTWKbfoikeg/0.jpg" alt="alt here..." />
+-->
+
+<h1><%=link_to @video.title + 'の曲',"#" %></h1>

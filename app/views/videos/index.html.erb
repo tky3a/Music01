@@ -4,15 +4,16 @@
 
   <!--Videosテーブルのyoutube_idからデータを取得する方法-->
 
-  <% @videos.each do |video| %>
+<!--  <% @videos.each do |video| %>
 
   <ul>
     <li><%=link_to(video.youtube_id, video_path(video.id)) %></li>
   </ul>
 
-  <% end %>
+  <% end %> -->
 
-  <% @videos.each do |video| %>
+  <% @videos.shuffle.first(1).each do |video| %>
+  <%=link_to "#{video.title}","videos/#{video.id}" %>
   <% iframe = content_tag(
     :iframe,
     '', # empty body
@@ -31,7 +32,7 @@
 <!--ジャンル毎にyoutube_idを取得できるように変更できるようにする-->
 <div class="menu">
   <div class="menu1">
-    <h2><%= link_to("ギターロック" ,"/videos/1")%></h2>
+    <h2><%= link_to("ギターロック" ,"/#")%></h2>
     <div class="menu1-video">
       <ul>
         <li><%= video(video_id: 'Pqf8Hbf9VbU') %></li>
@@ -39,6 +40,9 @@
         <li><%= video(video_id: 'JBhhi3XlP0A') %></li>
         <li><%= video(video_id: 'Pqf8Hbf9VbU') %></li>
       </ul>
+    </div>
+    <div class="link-genre">
+      <p><%= link_to("他も聴く","#")%></p>
     </div>
   </div>
 
@@ -54,6 +58,9 @@
         <li><%= video(video_id: 'F3tnfgZhJME') %></li>
       </ul>
     </div>
+    <div class="link-genre">
+      <p><%= link_to("他も聴く","#")%></p>
+    </div>
   </div>
 
   <div class="menu3">
@@ -64,6 +71,9 @@
       <ul>
         <li></li>
       </ul>
+    </div>
+    <div class="link-genre">
+      <p><%= link_to("他も聴く","#")%></p>
     </div>
   </div>
 
@@ -76,6 +86,9 @@
         <li></li>
       </ul>
     </div>
+    <div class="link-genre">
+      <p><%= link_to("他も聴く","#")%></p>
+    </div>
   </div>
 
   <div class="menu5">
@@ -87,13 +100,16 @@
         <li></li>
       </ul>
     </div>
+    <div class="link-genre">
+      <p><%= link_to("他も聴く","#")%></p>
+    </div>
   </div>
 
 </div>
 
-<% @videos.each do |video| %>
+<!--<% @videos.each do |video| %>
 
 <ul>
   <li><%=link_to "video.title", video_path(video.id) %></li>
-  <% end %>
+  <% end %> -->
 </end>
